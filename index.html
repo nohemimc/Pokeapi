@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="https://assets.pokemon.com/static2/_ui/img/favicon.ico"
+    />
+    <title>PokéApi</title>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="preload" href="./css/style.css" as="style" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <img src="./img/pokeapi.png" alt="Logo PokeApi" class="logo" />
+    <div class="pokeindex">
+      <div class="pokeindex-left">
+        <div class="pokeindex-left__top">
+          <div class="circle-big"></div>
+          <div class="circle-small"></div>
+        </div>
+        <div class="pokeindex-left__screen">
+          <div class="dots">
+            <span></span>
+            <span></span>
+          </div>
+          <div id="pokedex-container" class="screen" style="background: rgb(0, 0, 0)">
+            <div class="screen-exp" id="pokemon-experience"></div>
+            <img src="" alt="" id="pokemon-image">
+          </div>
+
+          <div class="status">
+            <div class="status-light"></div>
+            <div class="status-id" id="idPokemon"></div>
+            <div class="status-sound">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <div class="pokeindex-left__buttons">
+          <div class="buttons">
+            <div
+              class="buttons-circle is-off"
+            >
+              <a href="">
+                <img src="./img/boton-de-apagado.png" alt="" />
+              </a>
+            </div>
+            <div class="buttons-quad">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="controller">
+            <div id="view-name" class="controller-touch"></div>
+            <div class="controller-joystick"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pokeindex-middle"></div>
+      <div class="pokeindex-right">
+        <div
+          id="view-abilities"
+          class="pokeindex-right__screen"
+          style="background: rgb(0, 0, 0)"
+        ></div>
+        <div class="pokeindex-right__buttons">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="pokeindex-right__buttons-quadruple">
+          <div class="dot">
+            <span></span>
+            <span></span>
+          </div>
+          <div class="button">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="pokeindex-input">
+          <label for="name" class="text-input"
+            >Pokémon:
+            <input
+              type="search"
+              id="pokemon-name"
+              name="name"
+              class="input-poke"
+              placeholder="Search"
+            />
+          </label>
+        </div>
+        <div class="pokeindex-right__buttons-double">
+          <input id ="search-button" type="button" class="btn-buscar" value="Search" onclick="getPokemon()">
+        </div>
+      </div>
+    </div>
+    <script src="./client/home.js"></script>
+  </body>
+</html>
