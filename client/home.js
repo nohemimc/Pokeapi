@@ -12,16 +12,16 @@ const pokemon = d.getElementById("pokemon-name"); //Entrada del input
 // URL Base
 const url = "http://localhost:3000/";
 
-function getPokemon() {
+// Llamada al Backend: PokéApi
+const getPokemon = () => {
   fetch(`${url}pokemon/${pokemon.value.toLowerCase()}`, { method: "GET" })
     .then((data) => data.json())
     .then((response) => viewData(response))
-    .catch(err => pokemonNotFound())
+    .catch(error => pokemonNotFound(error))
 }
 
-function viewData(response) {
-  //Limpieza del DOM cada vez que se hace una petición
-  removeChildNodes(abilitiesPokemon);
+const viewData = (response) => {
+  clearHTML();
 
   // Vista de los elementos
   experiencePokemon.innerText = `EXP: ${response.pokemon.base_experience}`;
@@ -31,30 +31,21 @@ function viewData(response) {
   abilitiesPokemon.appendChild(progressBars(response.pokemon.stats));
 }
 
-// async function getPokemon() {
-//   //Llamada al Backend: PokéApi
-//   let response = await (
-//     await fetch(`${url}pokemon/${pokemon.value.toLowerCase()}`, {
-//       method: "GET",
-//     })
-//   ).json();
+//Limpieza del DOM cada vez que se hace una petición
+const clearHTML = () => {
+  imagePokemon.classList.remove('img-notFound'); //Remueve la clase de la img referente pokemonNotFound()
+  abilitiesPokemon.classList.remove('p-notnotFound'); //Remueve la clase del p referente pokemonNotFound()
+  removeChildNodes(abilitiesPokemon);
+  d.getElementById("pokemon-image").innerHTML = "";
+  d.getElementById("pokemon-experience").innerHTML = "";
+  d.getElementById("idPokemon").innerHTML = "";
+  d.getElementById("view-name").innerHTML = "";
+  d.getElementById("pokemon-name").value = "";
+} 
 
-//   //Limpieza del DOM cada vez que se hace una petición
-//   removeChildNodes(abilitiesPokemon);
-
-//   // Vista de los elementos
-//   experiencePokemon.innerText = `EXP: ${response.pokemon.base_experience}`;
-//   imagePokemon.src = response.pokemon.sprites.front_default;
-//   idPokemon.innerText = `ID: ${response.pokemon.id}`;
-//   namePokemon.innerText = response.pokemon.name;
-//   abilitiesPokemon.appendChild(progressBars(response.pokemon.stats));
-// }
-
-// pokemon.value = '';
 
 // Crea un DIV con los elementos necesarios para mostrar las habilidades del pokemon
-function progressBars(stats) {
-  imagePokemon.classList.remove('img-notFound'); //Remueve la clase de la img referente pokemonNotFound()
+const progressBars = (stats) => {
   const statsContainer = document.createElement("div");
   statsContainer.classList.add("stats-container");
 
@@ -94,7 +85,7 @@ function progressBars(stats) {
 }
 
 //Elimina stats para cada pokemon
-function removeChildNodes(parent) {
+const removeChildNodes = (parent) => {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
@@ -103,10 +94,11 @@ function removeChildNodes(parent) {
 // Crea un DIV informativo con la información de que el pokemon no se encuentra
 const pokemonNotFound = () => {
   imagePokemon.src = './img/error.png';
-  imagePokemon.classList.add('img-notFound');
+  imagePokemon.classList.add("img-notFound");
 
-  // abilitiesPokemon = d.createElement("p");
-  abilitiesPokemon.classList.add('pokeindex-right__screen');
-  abilitiesPokemon.textContent = 'Pokémon no encontrado, intentalo de nuevamente...';
-
+  abilitiesPokemon.innerHTML = `
+    <p>🙄<br>Pokémon no encontrado, intentalo nuevamente...</p>
+  `
+  abilitiesPokemon.classList.add("p-notnotFound")
 }
+
