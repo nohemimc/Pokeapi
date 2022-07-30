@@ -9,12 +9,10 @@ const namePokemon = d.getElementById("view-name");
 const abilitiesPokemon = d.getElementById("view-abilities");
 const pokemon = d.getElementById("pokemon-name"); //Entrada del input
 
-// URL Base
+// Llamada al API: Pokedex
 const url = "http://localhost:3000/";
-
-// Llamada al Backend: PokéApi
-const getPokemon = () => {
-  fetch(`${url}pokemon/${pokemon.value.toLowerCase()}`, { method: "GET" })
+const getPokemon = async () => {
+  await fetch(`${url}pokemon/${pokemon.value.toLowerCase()}`, { method: "GET" })
     .then((data) => data.json())
     .then((response) => viewData(response))
     .catch(error => pokemonNotFound(error))
@@ -93,6 +91,7 @@ const removeChildNodes = (parent) => {
 
 // Crea un DIV informativo con la información de que el pokemon no se encuentra
 const pokemonNotFound = () => {
+  clearHTML();
   imagePokemon.src = './img/error.png';
   imagePokemon.classList.add("img-notFound");
 

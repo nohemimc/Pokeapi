@@ -1,7 +1,7 @@
 {
   "name": "pokeapi",
   "version": "1.0.0",
-  "description": "",
+  "description": "PokeApi construida con HTML, CSS y JS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MichelleArellano/PokeApi.git"
+    "url": "https://github.com/nohemimc/Pokeapi.git"
   },
-  "author": "",
+  "author": "Erika Miranda",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MichelleArellano/PokeApi/issues"
+    "url": "https://github.com/nohemimc/Pokeapi/issues"
   },
-  "homepage": "https://github.com/MichelleArellano/PokeApi#readme",
+  "homepage": "",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.1",
