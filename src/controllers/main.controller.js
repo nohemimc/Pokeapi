@@ -15,6 +15,4 @@ mainController.getPokemon = async(req,res,next)=>{
     }
 }
 
-
-
 module.exports = mainController

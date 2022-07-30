@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Play&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 
 :root {
   --bg-rose: #ffabd4;
@@ -16,12 +16,13 @@
   --bg-lightgreen: #51f57d;
   --bg-shadow: rgba(116, 117, 116, 0.5);
 }
+
 body {
   background-image: url("https://pbs.twimg.com/media/D-EkX_hWkAEXeok.jpg:large");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  background-size: cover; 
+  background-size: cover;
   font-family: "Play", sans-serif;
 }
 
@@ -30,20 +31,22 @@ body {
   margin: auto;
   width: 700px;
 }
+
 @media screen and (min-width: 768px) {
   .logo {
     width: 20%;
   }
 }
+
 @media screen and (max-width: 768px) {
-  .logo{
+  .logo {
     width: 25%;
-  }    
+  }
 }
 
-/*.pokeindex * {
+/* .pokeindex * {
   position: absolute;
-}*/
+} */
 
 .pokeindex {
   height: 50rem;
@@ -52,27 +55,19 @@ body {
   display: flex;
 }
 
-
 @media screen and (max-width: 768px) {
-  .pokeindex{
+  .pokeindex {
     height: 35rem;
     width: 30rem;
   }
-  .input-poke{
+  .input-poke {
     width: 90px !important;
   }
-  .text-input{
+  .text-input {
     font-size: 1rem !important;
   }
 }
 
-/* @media screen and (max-width: 480px) {
-  .pokeindex{
-    height: 35rem;
-    width: 20rem;
-  }    
-} */
-  
 .pokeindex-left {
   height: 60%;
   width: 47%;
@@ -259,17 +254,17 @@ body {
 }
 
 .pokeindex-left__buttons .buttons .buttons-circle img {
-  left: 3px;
-  top: 2px;
   width: 42px;
   height: 40px;
 }
+
 @media screen and (max-width: 768px) {
   .pokeindex-left__buttons .buttons .buttons-circle img {
     width: 30px;
     height: 30px;
   }
 }
+
 .pokeindex-left__buttons .buttons .buttons-circle:hover {
   background-color: var(--bg-lightblue) !important;
 }
@@ -283,7 +278,7 @@ body {
 }
 
 .pokeindex-left__buttons .buttons .buttons-quad span {
-  height: 10%;
+  height: 18%;
   width: 42%;
   border: 2px solid var(--bg-black);
   position: relative;
@@ -312,7 +307,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 63%;
+  height: 60%;
   width: 65%;
   border: 2px solid var(--bg-black);
   background-color: var(--bg-lightgreen);
@@ -320,7 +315,9 @@ body {
   position: relative;
   box-shadow: inset 0px 0px 7px 3px var(--bg-shadow);
   font-weight: bold;
-  padding-top: .5rem;
+  font-size: 1.2rem;
+  text-align: center;
+  text-transform: capitalize;
 }
 
 .pokeindex-left__buttons .controller .controller-joystick {
@@ -402,18 +399,25 @@ body {
   -o-transition: all 0.5s ease-in;
 }
 
-.screen-exp{
+.screen-exp {
   top: 0;
-    padding-right: 8px;
-    padding-top: 8px;
-    margin: 0;
-    position: absolute;
-    right: 0;
-} 
+  padding-right: 8px;
+  padding-top: 8px;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  font-weight: bold;
+}
+
 .screen img {
   width: 90%;
   animation: show-img 2s 1 normal 0s ease-out both;
   -webkit-animation: show-img 2s 1 normal 0s ease-out both;
+}
+
+.screen .img-notFound {
+  height: 90px;
+  width: 90px;
 }
 
 .pokeindex-left__screen .status {
@@ -451,7 +455,6 @@ body {
 
 .pokeindex-left__screen .status .status-id {
   height: 50%;
-  width: 40%;
   position: relative;
   align-items: center;
   justify-content: center;
@@ -490,12 +493,12 @@ body {
   content: "";
   position: absolute;
   display: block;
-  height: 9%;
+  height: 10%;
   width: 100%;
   border-top: 2px solid var(--bg-black);
   border-bottom: 2px solid var(--bg-black);
   left: 0;
-  top: -9%;
+  top: -10%;
   box-shadow: inset 8px 0px 1px var(--bg-shadow);
 }
 
@@ -542,21 +545,38 @@ body {
 
 .pokeindex-right__screen {
   width: 85%;
-  height: 45%;
-  padding-left: 0.7rem;
+  height: 60%;
+  padding: 10px;
   border: 2px solid var(--bg-black);
   background-color: var(--bg-black);
   left: 50%;
   transform: translateX(-50%);
   border-radius: 10px;
-  position: relative; 
+  position: relative;
   box-shadow: inset 0px 0px 7px 8px var(--bg-shadow);
   transition: all 0.5s ease-in;
   -webkit-transition: all 0.5s ease-in;
   -moz-transition: all 0.5s ease-in;
   -ms-transition: all 0.5s ease-in;
   -o-transition: all 0.5s ease-in;
-  overflow-y: scroll;
+  overflow-y: auto;
+  scrollbar-width: 8px;
+  scrollbar-color: var(--bg-lightblue);
+}
+
+.pokeindex-right__screen::-webkit-scrollbar {
+  padding: 5px;
+  width: 10px;
+}
+
+.pokeindex-right__screen::-webkit-scrollbar-thumb {
+  background: #b3b3b3;
+  border-radius: 10px;
+}
+
+.pokeindex-right__screen::-webkit-scrollbar-thumb:hover {
+  background-color: var(--bg-lightblue);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .pokeindex-right__screen p,
@@ -664,7 +684,7 @@ body {
 }
 
 .pokeindex-right__buttons-quadruple .button span {
-  height: 80%;
+  height: 90%;
   width: 100%;
   border: 2px solid var(--bg-black);
   border-radius: 1px;
@@ -765,34 +785,36 @@ body {
   display: flex;
   justify-content: right;
   align-items: flex-start;
-  padding-right: 2rem;
 }
-.pokeindex-right__buttons-double input {
+
+.pokeindex-right__buttons-double button {
   width: 40%;
   height: 45%;
   color: #fff;
   text-decoration: none;
   text-align: center;
   align-items: center;
+  justify-items: center;
   border: 2px solid var(--bg-black);
   background-color: var(--bg-darkgray);
   position: relative;
   border-radius: 5px;
   transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
-  padding: 5px;
   box-shadow: inset 0px 0px 3px 3px var(--bg-shadow);
   margin-top: 1rem;
 }
+
 @media screen and (max-width: 768px) {
-  .pokeindex-right__buttons-double input{
-    margin-top: 0 !important;
+  .pokeindex-right__buttons-double button{
+    margin-top: 10px;
     font-size: 0.7rem;
   }
-  .controller-touch h4 {
+  .pokeindex-left__buttons .controller .controller-touch {
     font-size: 1rem;
-  }    
+  }
 }
-.pokeindex-right__buttons-double input:hover {
+
+.pokeindex-right__buttons-double button:hover {
   box-shadow: inset 0 0 20px rgba(49, 138, 172, 0.5),
     0 0 20px rgba(49, 138, 172, 0.4);
   text-shadow: 1px 1px 6px #fff;
@@ -813,7 +835,7 @@ body {
 
 .input-poke {
   margin-left: 5px;
-  width: 90%;
+  width: 60%;
   border: 2px solid var(--bg-black);
   padding: 2px 5px;
   border-radius: 5px;
@@ -821,6 +843,7 @@ body {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
+  font-size: 1rem;
 }
 
 .text-input {
@@ -841,12 +864,6 @@ body {
   }
 }
 
-/* .search-button-class {
-  position: absolute;
-  right: 0;
-  bottom: 20px;
-} */
-
-#view-abilities {
-  padding: 10px 12px 10px 10px;
+.stat-container {
+  text-transform: capitalize;
 }
