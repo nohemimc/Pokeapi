@@ -411,8 +411,8 @@ body {
 }
 
 .screen .img-notFound {
-  height: 90px;
-  width: 90px;
+  height: 105px;
+  width: 105px;
 }
 
 .pokeindex-left__screen .status {
@@ -598,8 +598,8 @@ body {
     font-size: 1rem;
   }
   .screen .img-notFound {
-    width: 50px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
   }
 }
 

@@ -8,41 +8,35 @@ const idPokemon = d.getElementById("idPokemon");
 const namePokemon = d.getElementById("view-name");
 const abilitiesPokemon = d.getElementById("view-abilities");
 const pokemon = d.getElementById("pokemon-name"); //Entrada del input
+const search_button = d.getElementById("search-button");
 
-// Llamada al API: Pokedex
-const url = "http://localhost:3000/";
+// Evento del botón: search_button
+search_button.addEventListener('click', function(e) {
+  e.preventDefault();
+  getPokemon();
+})
+
+// Llamada a la API de Pokémon
 const getPokemon = async () => {
-  await fetch(`${url}pokemon/${pokemon.value.toLowerCase()}`, { method: "GET" })
-    .then((data) => data.json())
-    .then((response) => viewData(response))
-    .catch(error => pokemonNotFound(error))
-}
+  const searchValue = pokemon.value.toLowerCase();
+  const pokeapi = `https://pokeapi.co/api/v2/pokemon/${searchValue}`
+    await fetch(pokeapi)
+      .then((data) => data.json())
+      .then((response) => viewData(response))
+      .catch((error) => pokemonNotFound(error));
+};
 
+// Vista de la información requerida
 const viewData = (response) => {
   clearHTML();
+  experiencePokemon.innerText = `EXP: ${response.base_experience}`;
+  imagePokemon.src = response.sprites.front_default;
+  idPokemon.innerText = `ID: ${response.id}`;
+  namePokemon.innerText = response.name;
+  abilitiesPokemon.appendChild(progressBars(response.stats));
+};
 
-  // Vista de los elementos
-  experiencePokemon.innerText = `EXP: ${response.pokemon.base_experience}`;
-  imagePokemon.src = response.pokemon.sprites.front_default;
-  idPokemon.innerText = `ID: ${response.pokemon.id}`;
-  namePokemon.innerText = response.pokemon.name;
-  abilitiesPokemon.appendChild(progressBars(response.pokemon.stats));
-}
-
-//Limpieza del DOM cada vez que se hace una petición
-const clearHTML = () => {
-  imagePokemon.classList.remove('img-notFound'); //Remueve la clase de la img referente pokemonNotFound()
-  abilitiesPokemon.classList.remove('p-notnotFound'); //Remueve la clase del p referente pokemonNotFound()
-  removeChildNodes(abilitiesPokemon);
-  d.getElementById("pokemon-image").innerHTML = "";
-  d.getElementById("pokemon-experience").innerHTML = "";
-  d.getElementById("idPokemon").innerHTML = "";
-  d.getElementById("view-name").innerHTML = "";
-  d.getElementById("pokemon-name").value = "";
-} 
-
-
-// Crea un DIV con los elementos necesarios para mostrar las habilidades del pokemon
+// Vista de las habilidades del pokemon
 const progressBars = (stats) => {
   const statsContainer = document.createElement("div");
   statsContainer.classList.add("stats-container");
@@ -80,24 +74,35 @@ const progressBars = (stats) => {
   }
 
   return statsContainer;
-}
+};
 
-//Elimina stats para cada pokemon
+// Limpieza del DOM cada vez que se hace una petición
+const clearHTML = () => {
+  imagePokemon.classList.remove("img-notFound"); //Remueve <img> => pokemonNotFound()
+  abilitiesPokemon.classList.remove("p-notnotFound"); //Remueve <p> => pokemonNotFound()
+  removeChildNodes(abilitiesPokemon);
+  d.getElementById("pokemon-image").innerHTML = "";
+  d.getElementById("pokemon-experience").innerHTML = "";
+  d.getElementById("idPokemon").innerHTML = "";
+  d.getElementById("view-name").innerHTML = "";
+  d.getElementById("pokemon-name").value = "";
+};
+
+// Elimina stats para cada pokemon
 const removeChildNodes = (parent) => {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
-}
+};
 
-// Crea un DIV informativo con la información de que el pokemon no se encuentra
+// Mensaje de pokemonNotFound
 const pokemonNotFound = () => {
   clearHTML();
-  imagePokemon.src = './img/error.png';
+  imagePokemon.src = "./img/error.png";
   imagePokemon.classList.add("img-notFound");
 
   abilitiesPokemon.innerHTML = `
-    <p>🙄<br>Pokémon no encontrado, intentalo nuevamente...</p>
-  `
-  abilitiesPokemon.classList.add("p-notnotFound")
-}
-
+    <p>😮<br>Pokémon no encontrado, intentalo nuevamente...</p>
+  `;
+  abilitiesPokemon.classList.add("p-notnotFound");
+};
