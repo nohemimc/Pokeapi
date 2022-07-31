@@ -78,10 +78,10 @@ const progressBars = (stats) => {
 
 // Limpieza del DOM cada vez que se hace una petición
 const clearHTML = () => {
+  d.getElementById("pokemon-image").innerHTML = "";
   imagePokemon.classList.remove("img-notFound"); //Remueve <img> => pokemonNotFound()
   abilitiesPokemon.classList.remove("p-notnotFound"); //Remueve <p> => pokemonNotFound()
   removeChildNodes(abilitiesPokemon);
-  d.getElementById("pokemon-image").innerHTML = "";
   d.getElementById("pokemon-experience").innerHTML = "";
   d.getElementById("idPokemon").innerHTML = "";
   d.getElementById("view-name").innerHTML = "";
